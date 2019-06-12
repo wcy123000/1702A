@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.dao.DianyingMapper">
+
+<select id="getList" resultType="map">
+select * from dianying a LEFT JOIN t_type b on a.tid=b.tid where a.name like '%${value}%'
+</select>
+<delete id="delete">
+delete from dianying where id in(${value})
+</delete>
+<select id="getDate" resultType="Type">
+select * from t_type
+</select>
+<insert id="Add">
+insert into dianying set name=#{name},douctor=#{douctor},price=#{price},sdate=#{sdate},stime=#{stime},tid=#{tid},nd=#{nd},qy=#{qy},zt=#{zt}
+</insert>
+</mapper>
